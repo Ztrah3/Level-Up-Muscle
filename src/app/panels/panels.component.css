@@ -1,0 +1,36 @@
+.panel-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.build-workout-panel {
+    margin: 5vh;
+    width: 45vh;
+    height: 75vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('panel-assests/panel-1.jpg');
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.view-workouts-panel {
+    margin: 5vh;
+    width: 45vh;
+    height: 75vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('panel-assests/panel-2.jpg');
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.build-workout-panel:hover, .view-workouts-panel:hover {
+    transform: scale(1.05); /* Adjust as needed */
+    cursor: pointer;
+}
