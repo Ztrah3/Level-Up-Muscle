@@ -1,7 +1,7 @@
 <div class="panel-container">
-    <div class="build-workout-panel"> 
+    <div class="build-workout-panel" (click)="buildWorkout.emit()"> 
         <h1>Generate A New Workout</h1>
     </div> 
-    <div class="view-workouts-panel">
+    <div class="view-workouts-panel" (click)="viewWorkouts()">
         <h1>View Saved Workouts</h1>
     </div>

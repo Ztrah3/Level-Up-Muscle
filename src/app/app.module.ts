@@ -7,6 +7,8 @@ import { PanelsComponent } from './panels/panels.component';
 import { TitleComponent } from './title/title.component';
 import { ModalComponent } from './modal/modal.component';
 import { WorkoutCardComponent } from './workout-card/workout-card.component';
+import { WorkoutsComponent } from './workouts/workouts.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { WorkoutCardComponent } from './workout-card/workout-card.component';
     PanelsComponent,
     TitleComponent,
     ModalComponent,
-    WorkoutCardComponent
+    WorkoutCardComponent,
+    WorkoutsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

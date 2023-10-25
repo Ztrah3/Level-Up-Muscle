@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-title',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./title.component.css']
 })
 export class TitleComponent {
+  @Input() showBackButton = false;
 
+  constructor(private router: Router) { }
+
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }

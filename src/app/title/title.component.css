@@ -24,11 +24,26 @@
     background: hsl(0, 100%, 40%, 0.1);
     border: 3px solid hsl(0, 100%, 40%);
     color: hsl(0, 100%, 40%);
-    margin-left: 10px;
     border-radius: 15px;
 }
 
 .page-title button:hover,
 .page-title button:focus-visible {
     background: hsl(0, 100%, 40%, 0.2);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: right;
+
+}
+
+.back-btn {
+    padding: 10px 30px;
+    font-size: 1em;
+    background: hsl(0, 100%, 40%, 0.1);
+    border: 3px solid hsl(0, 100%, 40%);
+    color: hsl(0, 100%, 40%);
+    border-radius: 15px;
+    margin-right: 15px;
 }

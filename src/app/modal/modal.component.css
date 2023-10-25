@@ -60,6 +60,7 @@
 .btn:hover,
 .btn:focus-visible {
     background: hsl(200, 100%, 50%, 0.2);
+    cursor: pointer;
 }
 
 .btn-danger {
@@ -73,4 +74,5 @@
 .btn-danger:hover,
 .btn.btn-danger:focus-visible {
     background: hsl(0, 100%, 40%, 0.2);
+    cursor: pointer;
 }
