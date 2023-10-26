@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GenerateWorkoutCardService } from '../generate-workout-card.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
   showModal = false;
+
+  
+  constructor(private generateWorkoutCardService: GenerateWorkoutCardService) {}
+
+  onGenerateWorkout(event: any) {
+    this.generateWorkoutCardService.generate(event.workoutName, event.muscleGroup);
+  }
 }

@@ -1,3 +1,3 @@
 <app-title></app-title>
 <app-panels (buildWorkout)="showModal = true"></app-panels>
-<app-modal *ngIf="showModal" (closeModal)="showModal = false"></app-modal>
+<app-modal (generateWorkout)="onGenerateWorkout($event)" *ngIf="showModal" (closeModal)="showModal = false"></app-modal>

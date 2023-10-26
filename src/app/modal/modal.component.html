@@ -3,9 +3,9 @@
     <div class="modal">
         <img src="assets/title-assests/Logo.jpg" alt="logo">
         <label class="WorkoutNameLabel" htmlFor="workoutName">Workout Name:</label>
-        <input class="workoutNameInput" id="workoutName" type="text" placeholder="i.e. chest day">
+        <input #workoutName class="workoutNameInput" id="workoutName" type="text" placeholder="i.e. chest day">
         <label class="muscleGroupLabel" htmlFor="muscleGroup">Target Muscle Group:</label>
-        <select class="muscleGroupSelect" id="muscleGroup">
+        <select #muscleGroup class="muscleGroupSelect" id="muscleGroup">
             <option value="">Select...</option>
             <option>Chest</option>
             <option>Back</option>
@@ -33,7 +33,7 @@
             <option>No</option>
         </select>
         <div class="btn-container">
-            <button class="btn">Next</button>
+            <button class="btn" (click)="generate()">Next</button>
             <button class="btn-danger" (click)="closeModal.emit()">Cancel</button>
         </div>
     </div>
