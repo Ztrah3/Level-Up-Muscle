@@ -13,28 +13,32 @@ export class GenerateWorkoutCardService {
     "Barbell preacher curls", "Dumbbell preacher curls"], 
     back: ["Bent over barbell rows", "T-bar rows", "Pull-ups", "Close-grip seated cable rows", "Wide-grip seated cable rows", "Straight arm pull downs", "Dumbbell shoulder shrugs", 
     "Barbell shoulder shrugs", "Close-grip front lat pulldown", "Wide-grip front lat pulldown", "Rack pulls", "Rope pullover",], 
-    legs: ["Back Squats", "Split squats", "Romanian deadlifts", "Leg press machine", "Goblet squats”, “Front squat”, “Walking lungs”,“Reverse lungs”, “Barbell hip thrusts”, “Deadlifts”, “Barbell hack squats”, “Side lungs"], 
-    abs: ["Planks", "Russian twists", "Bicycle crunches", "Sit ups", "Lying leg raises", "Mountain climbers", "Oblique crunches"],
+    legs: ["Back Squats", "Split squats", "Romanian deadlifts", "Leg press machine", "Goblet squats", "Front squat", "Walking lungs","Reverse lungs", "Barbell hip thrusts", "Deadlifts", "Barbell hack squats", "Side lungs"], 
+    core: ["Planks", "Russian twists", "Bicycle crunches", "Sit ups", "Lying leg raises", "Mountain climbers", "Oblique crunches"],
     Cardio: ["Treadmill", "Stairmaster", "Jump rope", "Row machine", "Shadow boxing", "Elliptical", "Stationary bike"] };
   isolatedExercises: { [key: string]: string[] } = { 
     chest: ["Dumbbell flyes", "Incline dumbbell flyes", "Decline dumbbell flyes", "Cable flyes", "Incline cable flyes", "Decline cable flyes", "Chest pullovers", "Pec deck machine",], 
     triceps: ["Dumbbell skull crushers", "Overhead Dumbbell tricep extensions", "Cable tricep push down", "Single arm cable tricep push down"], 
     biceps: ["Reverse barbell curls", "Cable curls", "Single-arm cable curls", "Overhead cable curls", "Seated incline dumbbell curls", "Seated hammer curls"], 
     back: ["Bent over dumbbell rows", "Roman chair back extensions", "Inverted rows", "Meadows rows", "Bent over dumbbell rows"], 
-    legs: ["Calf raises”, “Leg curls”, “Leg extensions”, “Donkey kicks”, “Single-leg cable kick backs kicks"], 
-    abs: ["Flutter kicks", "Hanging leg raises", "Hollow body hold", "V-sits", "ab rollouts", "Cable crunches"] };
+    legs: ["Calf raises", "Leg curls", "Leg extensions", "Donkey kicks", "Single-leg cable kick backs"], 
+    core: ["Flutter kicks", "Hanging leg raises", "Hollow body hold", "V-sits", "ab rollouts", "Cable crunches"] };
       
     workouts: { name: string, exercises: string[] }[] = [];
 
-  generate(workoutName: string, muscleGroup: string) {
-    const compoundExercises = this.getRandomExercises(this.componentExercises[muscleGroup.toLowerCase()], 3);
-    const isolatedExercises = this.getRandomExercises(this.isolatedExercises[muscleGroup.toLowerCase()], 3);
-    const workout = {
-      name: workoutName,
-      exercises: [...compoundExercises, ...isolatedExercises]
-    };
-    this.workouts.push(workout);
-  }
+    generate(workoutName: string, muscleGroup: string) {
+      if (this.workouts.length < 20) {
+        const compoundExercises = this.getRandomExercises(this.componentExercises[muscleGroup.toLowerCase()], 3);
+        const isolatedExercises = this.getRandomExercises(this.isolatedExercises[muscleGroup.toLowerCase()], 3);
+        const workout = {
+          name: workoutName,
+          exercises: [...compoundExercises, ...isolatedExercises]
+        };
+        this.workouts.push(workout);
+      } else {
+        console.log('You have reached the maximum number of workout cards.');
+      }
+    }
 
   getRandomExercises(exercises: string[], count: number): string[] {
     return this.shuffleArray(exercises).slice(0, count);

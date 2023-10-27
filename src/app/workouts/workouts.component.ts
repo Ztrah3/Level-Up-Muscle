@@ -7,9 +7,9 @@ import { GenerateWorkoutCardService } from '../generate-workout-card.service';
   styleUrls: ['./workouts.component.css']
 })
 export class WorkoutsComponent {
-  workouts: { name: string, exercises: string[] }[] = [];
+  constructor(public generateWorkoutCardService: GenerateWorkoutCardService) {}
 
-  constructor(private generateWorkoutCardService: GenerateWorkoutCardService) {
-    this.workouts = this.generateWorkoutCardService.workouts;
+  get workouts() {
+    return this.generateWorkoutCardService.workouts;
   }
 }
