@@ -62,12 +62,15 @@ export class GenerateWorkoutCardService {
       }
     }
 
-  getRandomExercises(exercises: string[], count: number): string[] {
-    return this.shuffleArray(exercises).slice(0, count);
-  }
+    getRandomExercises(exercises: string[], count: number): string[] {
+      if (!exercises) {
+        return [];
+      }
+      return this.shuffleArray(exercises).slice(0, count);
+    }
 
   shuffleArray(array: any[]): any[] {
-    for (let i = array.length - 1; i > 0; i--) {
+    for (let i = array?.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
