@@ -12,11 +12,15 @@ export class ModalComponent {
 
   @ViewChild('workoutName') workoutName!: ElementRef;
   @ViewChild('muscleGroup') muscleGroup!: ElementRef;
+  @ViewChild('workoutGoal') workoutGoal!: ElementRef;
+  @ViewChild('cardio') cardio!: ElementRef;
 
   generate() {
     this.generateWorkout.emit({
       workoutName: this.workoutName.nativeElement.value,
-      muscleGroup: this.muscleGroup.nativeElement.value
+      muscleGroup: this.muscleGroup.nativeElement.value,
+      workoutGoal: this.workoutGoal.nativeElement.value,
+      cardio: this.cardio.nativeElement.value 
     });
     this.closeModal.emit();
     this.router.navigate(['/workouts']);

@@ -15,7 +15,7 @@ export class GenerateWorkoutCardService {
     "Barbell shoulder shrugs", "Close-grip front lat pulldown", "Wide-grip front lat pulldown", "Rack pulls", "Rope pullover",], 
     legs: ["Back Squats", "Split squats", "Romanian deadlifts", "Leg press machine", "Goblet squats", "Front squat", "Walking lungs","Reverse lungs", "Barbell hip thrusts", "Deadlifts", "Barbell hack squats", "Side lungs"], 
     core: ["Planks", "Russian twists", "Bicycle crunches", "Sit ups", "Lying leg raises", "Mountain climbers", "Oblique crunches"],
-    Cardio: ["Treadmill", "Stairmaster", "Jump rope", "Row machine", "Shadow boxing", "Elliptical", "Stationary bike"] };
+    cardio: ["Treadmill", "Stairmaster", "Jump rope", "Row machine", "Shadow boxing", "Elliptical", "Stationary bike"] };
   isolatedExercises: { [key: string]: string[] } = { 
     chest: ["Dumbbell flyes", "Incline dumbbell flyes", "Decline dumbbell flyes", "Cable flyes", "Incline cable flyes", "Decline cable flyes", "Chest pullovers", "Pec deck machine",], 
     triceps: ["Dumbbell skull crushers", "Overhead Dumbbell tricep extensions", "Cable tricep push down", "Single arm cable tricep push down"], 
@@ -26,14 +26,34 @@ export class GenerateWorkoutCardService {
       
     workouts: { name: string, exercises: string[] }[] = [];
 
-    generate(workoutName: string, muscleGroup: string) {
+    generate(workoutName: string, muscleGroup: string, workoutGoal: string, cardio: string) {
       if (this.workouts.length < 20) {
         const compoundExercises = this.getRandomExercises(this.componentExercises[muscleGroup.toLowerCase()], 3);
         const isolatedExercises = this.getRandomExercises(this.isolatedExercises[muscleGroup.toLowerCase()], 3);
+        
+        let prefix = '';
+        switch(workoutGoal) {
+          case 'Increase Muscle':
+            prefix = '4 sets x 8-12 reps ';
+            break;
+          case 'Increase Strength':
+            prefix = '4 sets x 6-8 reps ';
+            break;
+          case 'Lean up':
+            prefix = '4 sets x 12-15 reps ';
+            break;
+        }
+
         const workout = {
           name: workoutName,
-          exercises: [...compoundExercises, ...isolatedExercises]
+          exercises: [...compoundExercises, ...isolatedExercises].map(exercise => prefix + exercise)
         };
+
+        if (cardio === 'Yes') {
+          const cardioExercise = this.getRandomExercises(this.componentExercises['cardio'], 1);
+          workout.exercises.push(...cardioExercise);
+        }
+
         this.workouts.push(workout);
       } else {
         console.log('You have reached the maximum number of workout cards.');

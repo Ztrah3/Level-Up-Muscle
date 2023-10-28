@@ -13,6 +13,6 @@ export class HomePageComponent {
   constructor(private generateWorkoutCardService: GenerateWorkoutCardService) {}
 
   onGenerateWorkout(event: any) {
-    this.generateWorkoutCardService.generate(event.workoutName, event.muscleGroup);
+    this.generateWorkoutCardService.generate(event.workoutName, event.muscleGroup, event.workoutGoal, event.cardio);
   }
 }
