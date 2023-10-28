@@ -1,0 +1,36 @@
+<div class="modal-overlay">
+    <div class="modal">
+        <img src="assets/title-assests/Logo.jpg" alt="logo">
+        <label class="WorkoutNameLabel" htmlFor="workoutName">Workout Name:</label>
+        <input #workoutName class="workoutNameInput" id="workoutName" type="text" placeholder="i.e. chest day">
+        <label for="exercise1">Exercise 1:</label>
+        <input #exercise1 type="text">
+        <label for="exercise2">Exercise 2:</label>
+        <input #exercise2 type="text">
+        <label for="exercise3">Exercise 3:</label>
+        <input #exercise3 type="text">
+        <label for="exercise4">Exercise 4:</label>
+        <input #exercise4 type="text">
+        <label for="exercise5">Exercise 5:</label>
+        <input #exercise5 type="text">
+        <label for="exercise6">Exercise 6:</label>
+        <input #exercise6 type="text">
+        <label class="workoutGoalLabel" htmlFor="workoutGoal">Workout Goal</label>
+        <select #workoutGoal class="workoutGoalSelect" id="workoutGoal">
+            <option value="">Select...</option>
+            <option>Increase Muscle</option>
+            <option>Increase Strength</option>
+            <option>Lean up</option>
+        </select>
+        <label class="cardioLabel" htmlFor="cardio">Add Cardio To Workout:</label>
+        <select #cardio class="cardioSelect" id="cardio">
+            <option value="">Select...</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        <div class="btn-container">
+            <button class="btn" (click)="edit()">Save</button>
+            <button class="btn-danger" (click)="closeModal.emit()">Cancel</button>
+        </div>
+    </div>
+</div>

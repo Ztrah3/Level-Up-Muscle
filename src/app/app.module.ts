@@ -9,6 +9,7 @@ import { ModalComponent } from './modal/modal.component';
 import { WorkoutCardComponent } from './workout-card/workout-card.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     ModalComponent,
     WorkoutCardComponent,
     WorkoutsComponent,
-    HomePageComponent
+    HomePageComponent,
+    EditModalComponent
   ],
   imports: [
     BrowserModule,
