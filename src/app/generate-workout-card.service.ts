@@ -24,7 +24,7 @@ export class GenerateWorkoutCardService {
     legs: ["Calf raises", "Leg curls", "Leg extensions", "Donkey kicks", "Single-leg cable kick backs"], 
     core: ["Flutter kicks", "Hanging leg raises", "Hollow body hold", "V-sits", "ab rollouts", "Cable crunches"] };
       
-    workouts: { name: string, exercises: string[] }[] = [];
+    workouts: { name: string, exercises: string[], workoutGoal?: string, cardio?: string }[] = [];
 
     generate(workoutName: string, muscleGroup: string, workoutGoal: string, cardio: string) {
       if (this.workouts.length < 20) {
@@ -46,7 +46,9 @@ export class GenerateWorkoutCardService {
 
         const workout = {
           name: workoutName,
-          exercises: [...compoundExercises, ...isolatedExercises].map(exercise => prefix + exercise)
+          exercises: [...compoundExercises, ...isolatedExercises].map(exercise => prefix + exercise),
+          workoutGoal: workoutGoal,
+          cardio: cardio
         };
 
         if (cardio === 'Yes') {

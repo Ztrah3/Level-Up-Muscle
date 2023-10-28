@@ -24,9 +24,15 @@ export class WorkoutsComponent {
     this.editModalOpen = true;
     this.editIndex = index;
   }
-
+  
   editWorkout(editedWorkout: any) {
-    this.generateWorkoutCardService.workouts[this.editIndex] = editedWorkout;
+    const workout = this.generateWorkoutCardService.workouts[this.editIndex];
+    this.generateWorkoutCardService.workouts[this.editIndex] = {
+      ...workout,
+      name: editedWorkout.workoutName,
+      workoutGoal: editedWorkout.workoutGoal,
+      cardio: editedWorkout.cardio
+    };
     this.editModalOpen = false;
-  }
+}
 }
