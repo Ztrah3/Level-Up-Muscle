@@ -8,7 +8,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class WorkoutCardComponent {
   @Input() workout: any;
   @Output() delete = new EventEmitter<void>();
-  @Output() openEditModal = new EventEmitter<void>();
 
   deleteWorkout() {
     this.delete.emit();

@@ -15,14 +15,16 @@ export class GenerateWorkoutCardService {
     "Barbell shoulder shrugs", "Close-grip front lat pulldown", "Wide-grip front lat pulldown", "Rack pulls", "Rope pullover",], 
     legs: ["Back Squats", "Split squats", "Romanian deadlifts", "Leg press machine", "Goblet squats", "Front squat", "Walking lungs","Reverse lungs", "Barbell hip thrusts", "Deadlifts", "Barbell hack squats", "Side lungs"], 
     core: ["Planks", "Russian twists", "Bicycle crunches", "Sit ups", "Lying leg raises", "Mountain climbers", "Oblique crunches"],
-    cardio: ["Treadmill", "Stairmaster", "Jump rope", "Row machine", "Shadow boxing", "Elliptical", "Stationary bike"] };
+    cardio: ["Treadmill", "Stairmaster", "Jump rope", "Row machine", "Shadow boxing", "Elliptical", "Stationary bike"],
+    shoulders: ["Seated barebell shoulder press", "Arnold press", "Seated dumbbell shoulder press", "Military press", "Half kneeling landmine press", "Smith machine press", "", "", "", "", "", ""] };
   isolatedExercises: { [key: string]: string[] } = { 
     chest: ["Dumbbell flyes", "Incline dumbbell flyes", "Decline dumbbell flyes", "Cable flyes", "Incline cable flyes", "Decline cable flyes", "Chest pullovers", "Pec deck machine",], 
     triceps: ["Dumbbell skull crushers", "Overhead Dumbbell tricep extensions", "Cable tricep push down", "Single arm cable tricep push down"], 
     biceps: ["Reverse barbell curls", "Cable curls", "Single-arm cable curls", "Overhead cable curls", "Seated incline dumbbell curls", "Seated hammer curls"], 
     back: ["Bent over dumbbell rows", "Roman chair back extensions", "Inverted rows", "Meadows rows", "Bent over dumbbell rows"], 
     legs: ["Calf raises", "Leg curls", "Leg extensions", "Donkey kicks", "Single-leg cable kick backs"], 
-    core: ["Flutter kicks", "Hanging leg raises", "Hollow body hold", "V-sits", "ab rollouts", "Cable crunches"] };
+    core: ["Flutter kicks", "Hanging leg raises", "Hollow body hold", "V-sits", "ab rollouts", "Cable crunches"],
+    shoulders: ["Lateral raise", "Reverse flye", "Front raise", "Cable lateral raise", "Face pulls", "Cable front raise", ""]  };
       
     workouts: { name: string, exercises: string[], workoutGoal?: string, cardio?: string }[] = [];
 

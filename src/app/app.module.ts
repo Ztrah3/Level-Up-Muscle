@@ -10,7 +10,6 @@ import { ModalComponent } from './modal/modal.component';
 import { WorkoutCardComponent } from './workout-card/workout-card.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     WorkoutCardComponent,
     WorkoutsComponent,
     HomePageComponent,
-    EditModalComponent,
   ],
   imports: [
     BrowserModule,
