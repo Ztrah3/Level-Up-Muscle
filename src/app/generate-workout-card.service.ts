@@ -16,7 +16,7 @@ export class GenerateWorkoutCardService {
     legs: ["Back Squats", "Split squats", "Romanian deadlifts", "Leg press machine", "Goblet squats", "Front squat", "Walking lungs","Reverse lungs", "Barbell hip thrusts", "Deadlifts", "Barbell hack squats", "Side lungs"], 
     core: ["Planks", "Russian twists", "Bicycle crunches", "Sit ups", "Lying leg raises", "Mountain climbers", "Oblique crunches"],
     cardio: ["Treadmill", "Stairmaster", "Jump rope", "Row machine", "Shadow boxing", "Elliptical", "Stationary bike"],
-    shoulders: ["Seated barebell shoulder press", "Arnold press", "Seated dumbbell shoulder press", "Military press", "Half kneeling landmine press", "Smith machine press", "", "", "", "", "", ""] };
+    shoulders: ["Seated barebell shoulder press", "Arnold press", "Seated dumbbell shoulder press", "Military press", "Half kneeling landmine press", "Smith machine press", "Machine shoulder press"] };
   isolatedExercises: { [key: string]: string[] } = { 
     chest: ["Dumbbell flyes", "Incline dumbbell flyes", "Decline dumbbell flyes", "Cable flyes", "Incline cable flyes", "Decline cable flyes", "Chest pullovers", "Pec deck machine",], 
     triceps: ["Dumbbell skull crushers", "Overhead Dumbbell tricep extensions", "Cable tricep push down", "Single arm cable tricep push down"], 
@@ -24,15 +24,71 @@ export class GenerateWorkoutCardService {
     back: ["Bent over dumbbell rows", "Roman chair back extensions", "Inverted rows", "Meadows rows", "Bent over dumbbell rows"], 
     legs: ["Calf raises", "Leg curls", "Leg extensions", "Donkey kicks", "Single-leg cable kick backs"], 
     core: ["Flutter kicks", "Hanging leg raises", "Hollow body hold", "V-sits", "ab rollouts", "Cable crunches"],
-    shoulders: ["Lateral raise", "Reverse flye", "Front raise", "Cable lateral raise", "Face pulls", "Cable front raise", ""]  };
+    shoulders: ["Lateral raise", "Reverse flye", "Front raise", "Cable lateral raise", "Face pulls", "Cable front raise"]  };
       
     workouts: { name: string, exercises: string[], workoutGoal?: string, cardio?: string }[] = [];
 
     generate(workoutName: string, muscleGroup: string, workoutGoal: string, cardio: string) {
       if (this.workouts.length < 20) {
-        const compoundExercises = this.getRandomExercises(this.componentExercises[muscleGroup.toLowerCase()], 3);
-        const isolatedExercises = this.getRandomExercises(this.isolatedExercises[muscleGroup.toLowerCase()], 3);
-        
+        let compoundExercises = [];
+        let isolatedExercises = [];
+    
+        switch(muscleGroup) {
+          case 'Chest + Triceps':
+            compoundExercises = [
+              ...this.getRandomExercises(this.componentExercises['chest'], 3),
+              ...this.getRandomExercises(this.componentExercises['triceps'], 2)
+            ];
+            isolatedExercises = [
+              ...this.getRandomExercises(this.isolatedExercises['chest'], 2),
+              ...this.getRandomExercises(this.isolatedExercises['triceps'], 1)
+            ];
+            break;
+          case 'Shoulders + Triceps':
+            compoundExercises = [
+              ...this.getRandomExercises(this.componentExercises['shoulders'], 3),
+              ...this.getRandomExercises(this.componentExercises['triceps'], 2)
+            ];
+            isolatedExercises = [
+              ...this.getRandomExercises(this.isolatedExercises['shoulders'], 2),
+              ...this.getRandomExercises(this.isolatedExercises['triceps'], 1)
+            ];
+            break;
+          case 'Back + Biceps':
+            compoundExercises = [
+              ...this.getRandomExercises(this.componentExercises['back'], 3),
+              ...this.getRandomExercises(this.componentExercises['biceps'], 2)
+            ];
+            isolatedExercises = [
+              ...this.getRandomExercises(this.isolatedExercises['back'], 2),
+              ...this.getRandomExercises(this.isolatedExercises['biceps'], 1)
+            ];
+            break;
+          case 'Legs + Core':
+            compoundExercises = [
+              ...this.getRandomExercises(this.componentExercises['legs'], 3),
+              ...this.getRandomExercises(this.componentExercises['core'], 2)
+            ];
+            isolatedExercises = [
+              ...this.getRandomExercises(this.isolatedExercises['legs'], 2),
+              ...this.getRandomExercises(this.isolatedExercises['core'], 1)
+            ];
+            break;
+          case 'Biceps + Triceps':
+            compoundExercises = [
+              ...this.getRandomExercises(this.componentExercises['biceps'], 3),
+              ...this.getRandomExercises(this.componentExercises['triceps'], 2)
+            ];
+            isolatedExercises = [
+              ...this.getRandomExercises(this.isolatedExercises['biceps'], 2),
+              ...this.getRandomExercises(this.isolatedExercises['triceps'], 1)
+            ];
+            break;
+          default:
+            compoundExercises = this.getRandomExercises(this.componentExercises[muscleGroup.toLowerCase()], 3);
+            isolatedExercises = this.getRandomExercises(this.isolatedExercises[muscleGroup.toLowerCase()], 3);
+        }
+    
         let prefix = '';
         switch(workoutGoal) {
           case 'Increase Muscle':
@@ -45,25 +101,24 @@ export class GenerateWorkoutCardService {
             prefix = '4 sets x 12-15 reps ';
             break;
         }
-
+    
         const workout = {
           name: workoutName,
           exercises: [...compoundExercises, ...isolatedExercises].map(exercise => prefix + exercise),
           workoutGoal: workoutGoal,
           cardio: cardio
         };
-
+    
         if (cardio === 'Yes') {
           const cardioExercise = this.getRandomExercises(this.componentExercises['cardio'], 1);
           workout.exercises.push(...cardioExercise);
         }
-
+    
         this.workouts.push(workout);
       } else {
         console.log('You have reached the maximum number of workout cards.');
       }
     }
-
     getRandomExercises(exercises: string[], count: number): string[] {
       if (!exercises) {
         return [];
